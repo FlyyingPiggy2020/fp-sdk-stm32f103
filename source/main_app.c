@@ -44,6 +44,7 @@ SOFTWARE.
 
 void main_app(void)
 {
+	log_a("hello world");
     while(1)
     {
         ;

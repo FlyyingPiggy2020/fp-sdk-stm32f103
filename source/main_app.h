@@ -34,7 +34,7 @@ SOFTWARE.
 #ifndef __MAIN_APP_H__
 #define __MAIN_APP_H__
 /*---------- includes ----------*/
-
+#include "../config.h"
 #include "../fp-sdk/fp_sdk.h"
 /*---------- macro ----------*/
 /*---------- type define ----------*/
