@@ -1,0 +1,1 @@
+git-repo forall -c 'git push origin'

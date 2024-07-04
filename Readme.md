@@ -2,18 +2,12 @@
 
 ### windows
 
-1. install git-repo and python
-2. pip install kconfiglib.
+1. install git. install git-repo and add git-repo path to your system.
+2. run export.sh in git bash.
 
-```c
-python -m pip install windows-curses
+```shell
 
-python -m pip install kconfiglib
-
-git-repo init -u git@github.com:FlyyingPiggy2020/fp-sdk-manifeasts.git -b main
-
-git-repo sync
+./export.sh
 ```
 
 #### build
-
