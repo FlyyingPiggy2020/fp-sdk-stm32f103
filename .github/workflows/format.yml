@@ -1,0 +1,40 @@
+name: Format Code
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - uses: actions/checkout@v2
+
+    - name: Run script
+      run: bash ./path-to-your-script.sh
+      shell: bash
+
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install clang-format
+      run: sudo apt-get install -y clang-format
+
+    - name: Format code
+      run: find . -name '*.cpp' -or -name '*.h' | xargs clang-format -i
+
+    - name: Check for modified files
+      run: |
+        if [[ `git status --porcelain` ]]; then
+          echo "Code is not formatted properly"
+          exit 1
+        fi

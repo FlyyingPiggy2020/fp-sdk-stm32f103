@@ -28,9 +28,8 @@ SOFTWARE.
  * @Date         : 2024-07-03 17:08:25
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
  * @LastEditTime : 2024-07-03 17:11:13
- * @Brief        : 
+ * @Brief        :
  */
-
 
 /*---------- includes ----------*/
 
@@ -44,12 +43,9 @@ SOFTWARE.
 
 void main_app(void)
 {
-	log_a("hello world");
-    while(1)
-    {
+    log_a("hello world");
+    while (1) {
         ;
     }
 }
 /*---------- end of file ----------*/
-
-

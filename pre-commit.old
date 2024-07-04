@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# 运行格式化脚本
+./format_code.bat
+
+# 检查是否有未提交的更改
+if ! git diff-index --quiet HEAD --; then
+  echo "代码未正确格式化，请重新提交。"
+  exit 1
+fi

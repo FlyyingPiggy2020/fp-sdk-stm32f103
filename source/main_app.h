@@ -28,7 +28,7 @@ SOFTWARE.
  * @Date         : 2024-07-03 17:08:13
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
  * @LastEditTime : 2024-07-03 17:13:20
- * @Brief        : 
+ * @Brief        :
  */
 
 #ifndef __MAIN_APP_H__
@@ -44,5 +44,3 @@ SOFTWARE.
 void main_app(void);
 /*---------- end of file ----------*/
 #endif // !__MAIN_APP_H__
-
-
