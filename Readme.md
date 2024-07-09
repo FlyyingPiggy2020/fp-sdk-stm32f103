@@ -10,4 +10,10 @@
 ./export.sh
 ```
 
-#### build
+#### push
+
+1. use push all shell command could push all commit to origin
+
+```
+./push_all.sh
+```
