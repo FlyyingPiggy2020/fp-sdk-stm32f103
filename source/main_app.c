@@ -40,12 +40,31 @@ SOFTWARE.
 /*---------- function prototype ----------*/
 /*---------- variable ----------*/
 /*---------- function ----------*/
-
+int used_size = 0;
+fp_timer_t *timer1;
+fp_timer_t *timer2;
+fp_timer_t *timer_next;
+extern int heap_init(void);
+extern int heap_get_used_size(void);
+void timer1_cb(fp_timer_t *task)
+{
+	log_a("hello world");
+}
+void timer2_cb(fp_timer_t *task)
+{
+	timer_next = fp_timer_get_next(timer1);
+	used_size = heap_get_used_size();
+}
 void main_app(void)
 {
-    log_a("hello world");
+
+	heap_init();
+	_fp_timer_core_init();
+	timer1 = fp_timer_create(timer1_cb, 1000, NULL);
+	timer2 = fp_timer_create(timer2_cb, 1000, NULL);
+	fp_timer_set_repeat_count(timer1,5);
     while (1) {
-        ;
+		fp_timer_handler();
     }
 }
 /*---------- end of file ----------*/
