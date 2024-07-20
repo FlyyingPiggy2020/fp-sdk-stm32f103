@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\..\fp-sdk</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\..\fp-sdk;..\..\fp-sdk\utilities\data_center</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -574,6 +574,21 @@
               <FileName>tlsf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\fp-sdk\utilities\heap\TLSF-2.4.6\src\tlsf.c</FilePath>
+            </File>
+            <File>
+              <FileName>account.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\fp-sdk\utilities\data_center\account.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_center.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\fp-sdk\utilities\data_center\data_center.c</FilePath>
+            </File>
+            <File>
+              <FileName>pingpong.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\fp-sdk\utilities\pingpong\pingpong.c</FilePath>
             </File>
           </Files>
         </Group>
