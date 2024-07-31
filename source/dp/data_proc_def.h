@@ -23,45 +23,28 @@ SOFTWARE.
 */
 /*
  * Copyright (c) 2024 by Lu Xianfan.
- * @FilePath     : main_app.c
+ * @FilePath     : data_proc_def.h
  * @Author       : lxf
- * @Date         : 2024-07-03 17:08:25
+ * @Date         : 2024-07-30 15:03:48
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
- * @LastEditTime : 2024-07-03 17:11:13
- * @Brief        :
+ * @LastEditTime : 2024-07-30 15:14:33
+ * @Brief        : 
  */
 
+#ifndef __DATA_PROC_DEF_H
+#define __DATA_PROC_DEF_H
 /*---------- includes ----------*/
-
-#include "main_app.h"
-#include "data_center.h"
-#include "data_proc.h"
+#include <stdint.h>
 /*---------- macro ----------*/
-
-#define ACCOUNT_SEND_CMD(account, CMD) \
-do{ \
-    dp_##account##_info_t info; \
-    DATA_PROC_INIT_STRUCT(info); \
-    info.cmd = CMD; \
-	data_center_t *center = data_proc_get_center(); \
-	account_notify_from_id(center->account_main, #account, &info, sizeof(info));\
-}while(0)
-
 /*---------- type define ----------*/
+
+typedef struct {
+    enum {
+        DP_BLECONF_TYPE_NOTIFY,
+    } cmd;    
+}dp_ble_info_t;
+
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
-/*---------- variable ----------*/
-/*---------- function ----------*/
-
-void main_app(void)
-{
-    heap_init();
-    _fp_timer_core_init();
-	data_proc_init();
-	ACCOUNT_SEND_CMD(ble, DP_BLECONF_TYPE_NOTIFY);
-    while (1) {
-        fp_timer_handler();
-    }
-}
-
 /*---------- end of file ----------*/
+#endif

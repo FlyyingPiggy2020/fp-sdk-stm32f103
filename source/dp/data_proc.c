@@ -23,45 +23,47 @@ SOFTWARE.
 */
 /*
  * Copyright (c) 2024 by Lu Xianfan.
- * @FilePath     : main_app.c
+ * @FilePath     : data_proc.c
  * @Author       : lxf
- * @Date         : 2024-07-03 17:08:25
+ * @Date         : 2024-07-30 15:01:12
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
- * @LastEditTime : 2024-07-03 17:11:13
- * @Brief        :
+ * @LastEditTime : 2024-07-30 15:08:37
+ * @Brief        : 
  */
 
-/*---------- includes ----------*/
 
-#include "main_app.h"
-#include "data_center.h"
+/*---------- includes ----------*/
 #include "data_proc.h"
 /*---------- macro ----------*/
-
-#define ACCOUNT_SEND_CMD(account, CMD) \
-do{ \
-    dp_##account##_info_t info; \
-    DATA_PROC_INIT_STRUCT(info); \
-    info.cmd = CMD; \
-	data_center_t *center = data_proc_get_center(); \
-	account_notify_from_id(center->account_main, #account, &info, sizeof(info));\
-}while(0)
-
 /*---------- type define ----------*/
 /*---------- variable prototype ----------*/
+
+static data_center_t *data_center = NULL;
+
+#define DATA_PROC_DEF(name, buffer_size)                        account_t *act_##name
+#include "dp_list.inc"
+#undef DATA_PROC_DEF
 /*---------- function prototype ----------*/
 /*---------- variable ----------*/
 /*---------- function ----------*/
-
-void main_app(void)
+void data_proc_init(void)
 {
-    heap_init();
-    _fp_timer_core_init();
-	data_proc_init();
-	ACCOUNT_SEND_CMD(ble, DP_BLECONF_TYPE_NOTIFY);
-    while (1) {
-        fp_timer_handler();
-    }
+    data_center = data_center_init("center");
+#define DATA_PROC_DEF(name, buffer_size) act_##name=account_init(#name, data_center, buffer_size, NULL);
+#include "dp_list.inc"
+#undef DATA_PROC_DEF
+
+#define DATA_PROC_DEF(name, buffer_size)\
+do{\
+    extern void _data_proc_##name##_init(account_t *account);\
+    _data_proc_##name##_init(act_##name);\
+}while(0)
+#include "dp_list.inc"
+#undef DATA_PROC_DEF
 }
 
+data_center_t *data_proc_get_center(void)
+{
+    return data_center;
+}
 /*---------- end of file ----------*/

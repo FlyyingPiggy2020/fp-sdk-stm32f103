@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\..\fp-sdk;..\..\fp-sdk\utilities\data_center</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\..\fp-sdk;..\..\fp-sdk\utilities\data_center;..\..\source\dp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -604,6 +604,21 @@
               <FileName>SEGGER_RTT_printf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\third_party\segger-rtt\RTT\SEGGER_RTT_printf.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>data_proc</GroupName>
+          <Files>
+            <File>
+              <FileName>data_proc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\source\dp\data_proc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dp_ble.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\source\dp\dp_ble.c</FilePath>
             </File>
           </Files>
         </Group>

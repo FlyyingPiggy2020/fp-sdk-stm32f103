@@ -23,45 +23,30 @@ SOFTWARE.
 */
 /*
  * Copyright (c) 2024 by Lu Xianfan.
- * @FilePath     : main_app.c
+ * @FilePath     : data_proc.h
  * @Author       : lxf
- * @Date         : 2024-07-03 17:08:25
+ * @Date         : 2024-07-30 15:02:15
  * @LastEditors  : FlyyingPiggy2020 154562451@qq.com
- * @LastEditTime : 2024-07-03 17:11:13
- * @Brief        :
+ * @LastEditTime : 2024-07-30 15:26:34
+ * @Brief        : 
  */
+
+#ifndef __DATA_PROC_H
+#define __DATA_PROC_H
 
 /*---------- includes ----------*/
 
-#include "main_app.h"
-#include "data_center.h"
-#include "data_proc.h"
+#include "../../fp-sdk/utilities/data_center/data_center.h"
+#include "data_proc_def.h"
 /*---------- macro ----------*/
-
-#define ACCOUNT_SEND_CMD(account, CMD) \
-do{ \
-    dp_##account##_info_t info; \
-    DATA_PROC_INIT_STRUCT(info); \
-    info.cmd = CMD; \
-	data_center_t *center = data_proc_get_center(); \
-	account_notify_from_id(center->account_main, #account, &info, sizeof(info));\
-}while(0)
-
 /*---------- type define ----------*/
 /*---------- variable prototype ----------*/
 /*---------- function prototype ----------*/
-/*---------- variable ----------*/
-/*---------- function ----------*/
 
-void main_app(void)
-{
-    heap_init();
-    _fp_timer_core_init();
-	data_proc_init();
-	ACCOUNT_SEND_CMD(ble, DP_BLECONF_TYPE_NOTIFY);
-    while (1) {
-        fp_timer_handler();
-    }
-}
 
+#define DATA_PROC_INIT_DEF(name)	void _data_proc_##name##_init(account_t *account)
+#define DATA_PROC_INIT_STRUCT(sct)	memset(&sct, 0, sizeof(sct))
+void data_proc_init(void);
+data_center_t *data_proc_get_center(void);
 /*---------- end of file ----------*/
+#endif
